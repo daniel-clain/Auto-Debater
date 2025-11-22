@@ -1,0 +1,111 @@
+.option-buttons-container {
+  width: 100%;
+}
+
+.options-title {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #a0a0a0;
+  text-align: center;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.option-button {
+  min-height: 100px;
+  padding: 15px;
+  border: 2px solid #333;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  text-align: left;
+  position: relative;
+}
+
+.option-button:hover:not(.empty):not(:disabled) {
+  border-color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.option-button.selected {
+  border-color: #764ba2;
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  box-shadow: 0 5px 20px rgba(118, 75, 162, 0.5);
+}
+
+.option-button.empty {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.option-button:disabled {
+  cursor: not-allowed;
+}
+
+.option-priority {
+  font-size: 12px;
+  color: #a0a0a0;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.option-button.selected .option-priority {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.option-text {
+  font-size: 14px;
+  line-height: 1.4;
+  flex: 1;
+  margin-bottom: 8px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.option-score {
+  font-size: 11px;
+  color: #667eea;
+  font-weight: 500;
+}
+
+.option-button.selected .option-score {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.option-placeholder {
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+  width: 100%;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .options-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .option-button {
+    min-height: 80px;
+    padding: 12px;
+  }
+
+  .option-text {
+    font-size: 12px;
+    -webkit-line-clamp: 2;
+  }
+}

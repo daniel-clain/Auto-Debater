@@ -1,2 +1,63 @@
 # Auto-Debater
-It  listens to what is being said between two people arguing, it identifies which person you are,  and it hears your arguments and their arguments, and i fact checks from multiple sources, it gives you the top arguments and counter arguments, you can put an earbud in and press a button to hear key arguments that will win you any debate quickly.
+
+A real-time debate assistant that uses AI to analyze arguments, generate rebuttals, and provide strategic suggestions during live debates.
+
+## Architecture
+
+The system is built with a clear separation of concerns:
+
+- **Frontend**: React + TypeScript, communicates via WebSocket
+- **Backend**: Node.js + TypeScript, single WebSocket communication channel
+- **Shared Types**: TypeScript types shared between frontend and backend
+
+See [ARCHITECTURE.md](./ARCHITECTURE.md) for detailed system breakdown.
+
+## Quick Start
+
+### Backend Setup
+
+```bash
+cd backend
+npm install
+cp .env.example .env
+# Edit .env with your API keys
+npm run dev
+```
+
+### Frontend Setup
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+### Production Build
+
+```bash
+# Build frontend
+cd frontend
+npm run build
+
+# Backend will serve frontend from dist/ folder
+cd backend
+npm start
+```
+
+## WebSocket Communication
+
+All communication uses a single WebSocket channel with typed messages:
+
+- **Frontend → Backend**: Audio chunks, transcripts
+- **Backend → Frontend**: Micro-updates, rebuttals, summaries, warnings
+
+See `shared/types.ts` for all message types.
+
+## System Modules
+
+- **Core**: WebSocket manager, message router
+- **Audio**: Stream handling, speech recognition
+- **AI**: Multi-agent analysis (ChatGPT, DeepSeek, Grok)
+- **Intelligence**: Argument modeling, rebuttal generation, tone analysis
+- **Response**: Priority ranking, strategy selection
+- **Profile**: Rival tracking, persona building
